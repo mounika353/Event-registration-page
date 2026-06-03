@@ -1,0 +1,2575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DevFest 2025 — Where builders, makers & thinkers unite</title>
+  <meta name="description" content="Join DevFest 2025 on November 15 at The Warehouse, Bengaluru. 300 seats, free entry. Talks, workshops, and networking for developers." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+  <!-- AOS.js -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+  <style>
+    /* ===========================
+       CSS CUSTOM PROPERTIES
+    =========================== */
+    :root {
+      --bg: #FAF8F5;
+      --primary: #4F46E5;
+      --primary-light: #6366F1;
+      --primary-dark: #3730A3;
+      --secondary: #FF6B6B;
+      --secondary-light: #FF8A8A;
+      --text: #1A1A2E;
+      --text-muted: #64648B;
+      --card-bg: #FFFFFF;
+      --card-shadow: 0 4px 24px rgba(79, 70, 229, 0.06);
+      --card-shadow-hover: 0 12px 40px rgba(79, 70, 229, 0.12);
+      --border: #E5E5EF;
+      --tag-keynote-bg: #FFF7ED;
+      --tag-keynote-text: #B45309;
+      --tag-workshop-bg: #ECFDF5;
+      --tag-workshop-text: #047857;
+      --tag-panel-bg: #F3E8FF;
+      --tag-panel-text: #7C3AED;
+      --tag-break-bg: #F3F4F6;
+      --tag-break-text: #6B7280;
+      --tag-social-bg: #FDF2F8;
+      --tag-social-text: #DB2777;
+      --tag-talk-bg: #EFF6FF;
+      --tag-talk-text: #2563EB;
+      --radius: 16px;
+      --radius-sm: 10px;
+      --radius-xs: 6px;
+      --font-heading: 'Space Grotesk', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --nav-height: 72px;
+      --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ===========================
+       RESET & BASE
+    =========================== */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.7;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--font-heading);
+      line-height: 1.2;
+      font-weight: 700;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    button {
+      cursor: pointer;
+      font-family: var(--font-body);
+      border: none;
+      outline: none;
+    }
+
+    input, select {
+      font-family: var(--font-body);
+      outline: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+
+    .section-subtitle {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 560px;
+    }
+
+    section {
+      padding: 100px 0;
+    }
+
+    /* ===========================
+       NAVBAR
+    =========================== */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      height: var(--nav-height);
+      display: flex;
+      align-items: center;
+      transition: var(--transition);
+      background: transparent;
+    }
+
+    .navbar.scrolled {
+      background: rgba(250, 248, 245, 0.72);
+      backdrop-filter: blur(20px) saturate(1.8);
+      -webkit-backdrop-filter: blur(20px) saturate(1.8);
+      box-shadow: 0 1px 24px rgba(79, 70, 229, 0.06);
+      border-bottom: 1px solid rgba(79, 70, 229, 0.06);
+    }
+
+    .navbar .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-heading);
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .nav-logo .bolt-icon {
+      width: 28px;
+      height: 28px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+    }
+
+    .nav-logo .bolt-icon i {
+      width: 16px;
+      height: 16px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.92rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      transition: color var(--transition);
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      border-radius: 2px;
+      transition: width var(--transition);
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      padding: 10px 24px;
+      background: var(--primary);
+      color: #fff !important;
+      border-radius: 100px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: all var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .nav-cta::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s;
+    }
+
+    .nav-cta:hover {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(79, 70, 229, 0.3);
+    }
+
+    .nav-cta:hover::before {
+      left: 100%;
+    }
+
+    .nav-cta::after {
+      display: none !important;
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      padding: 4px;
+      z-index: 1001;
+    }
+
+    .hamburger span {
+      width: 24px;
+      height: 2.5px;
+      background: var(--text);
+      border-radius: 4px;
+      transition: var(--transition);
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    /* Mobile Menu */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(250, 248, 245, 0.97);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      z-index: 999;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity var(--transition);
+    }
+
+    .mobile-menu.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .mobile-menu a {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--text);
+      transition: color var(--transition);
+    }
+
+    .mobile-menu a:hover {
+      color: var(--primary);
+    }
+
+    /* ===========================
+       HERO SECTION
+    =========================== */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding-top: var(--nav-height);
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 0;
+      background: linear-gradient(
+        135deg,
+        #FAF8F5 0%,
+        #EDE9FE 25%,
+        #FAF8F5 40%,
+        #FFE4E6 60%,
+        #FAF8F5 75%,
+        #E0E7FF 100%
+      );
+      background-size: 400% 400%;
+      animation: gradientShift 12s ease infinite;
+    }
+
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at 30% 40%, rgba(79,70,229,0.08) 0%, transparent 50%),
+                  radial-gradient(circle at 70% 60%, rgba(255,107,107,0.08) 0%, transparent 50%),
+                  radial-gradient(circle at 50% 80%, rgba(124,58,237,0.06) 0%, transparent 50%);
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      padding: 0 24px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 20px;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(79, 70, 229, 0.1);
+      border-radius: 100px;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--primary);
+      margin-bottom: 28px;
+      animation: floatBadge 3s ease-in-out infinite;
+    }
+
+    @keyframes floatBadge {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+
+    /* Floating geometric decorations */
+    .hero-decor {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.12;
+      filter: blur(1px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero-decor-1 {
+      width: 320px;
+      height: 320px;
+      background: var(--primary);
+      top: 10%;
+      left: -8%;
+      animation: floatDecor1 8s ease-in-out infinite;
+    }
+
+    .hero-decor-2 {
+      width: 200px;
+      height: 200px;
+      background: var(--secondary);
+      top: 60%;
+      right: -5%;
+      animation: floatDecor2 10s ease-in-out infinite;
+    }
+
+    .hero-decor-3 {
+      width: 140px;
+      height: 140px;
+      background: #7C3AED;
+      bottom: 15%;
+      left: 15%;
+      border-radius: 30%;
+      animation: floatDecor3 12s ease-in-out infinite;
+    }
+
+    .hero-decor-4 {
+      width: 80px;
+      height: 80px;
+      background: var(--primary);
+      top: 25%;
+      right: 12%;
+      border-radius: 20%;
+      animation: floatDecor1 7s ease-in-out infinite reverse;
+    }
+
+    @keyframes floatDecor1 {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      33% { transform: translate(20px, -30px) rotate(10deg); }
+      66% { transform: translate(-15px, 15px) rotate(-5deg); }
+    }
+
+    @keyframes floatDecor2 {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      50% { transform: translate(-25px, -20px) rotate(15deg); }
+    }
+
+    @keyframes floatDecor3 {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      25% { transform: translate(15px, -10px) rotate(12deg); }
+      75% { transform: translate(-10px, 20px) rotate(-8deg); }
+    }
+
+    .hero h1 {
+      font-size: clamp(2.8rem, 7vw, 5rem);
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 16px;
+      letter-spacing: -1.5px;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-tagline {
+      font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+      color: var(--text-muted);
+      margin-bottom: 32px;
+      font-weight: 400;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+
+    .hero-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 18px;
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(79, 70, 229, 0.08);
+      border-radius: 100px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .hero-chip i {
+      width: 16px;
+      height: 16px;
+      color: var(--primary);
+    }
+
+    /* Countdown */
+    .countdown {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 40px;
+    }
+
+    .countdown-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .countdown-value {
+      font-family: var(--font-heading);
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 700;
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(79, 70, 229, 0.08);
+      border-radius: 14px;
+      width: 72px;
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+    }
+
+    .countdown-label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .countdown-sep {
+      font-family: var(--font-heading);
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 20px;
+      animation: pulseSep 2s ease-in-out infinite;
+    }
+
+    @keyframes pulseSep {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    .countdown-value {
+      transition: transform 0.3s ease;
+    }
+
+    .countdown-value.tick {
+      animation: tickFlip 0.4s ease;
+    }
+
+    @keyframes tickFlip {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.08); }
+      100% { transform: scale(1); }
+    }
+
+    /* Hero Buttons */
+    .hero-buttons {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 32px;
+      background: var(--primary);
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 100px;
+      transition: all var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+      transition: left 0.6s;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(79, 70, 229, 0.3);
+    }
+
+    .btn-primary:hover::before {
+      left: 100%;
+    }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 32px;
+      background: transparent;
+      color: var(--text);
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 100px;
+      border: 2px solid var(--border);
+      transition: all var(--transition);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(79, 70, 229, 0.1);
+    }
+
+    /* ===========================
+       ABOUT SECTION
+    =========================== */
+    #about {
+      background: var(--bg);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #about::before {
+      content: '';
+      position: absolute;
+      top: 40px;
+      right: -20px;
+      width: 240px;
+      height: 240px;
+      background-image: radial-gradient(circle, rgba(79,70,229,0.08) 2px, transparent 2px);
+      background-size: 20px 20px;
+      pointer-events: none;
+      opacity: 0.7;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+      margin-top: 48px;
+    }
+
+    .about-text p {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+      line-height: 1.8;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .stat-card {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 28px 32px;
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--card-shadow);
+      border: 1px solid rgba(79, 70, 229, 0.04);
+      transition: all var(--transition);
+    }
+
+    .stat-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--card-shadow-hover);
+    }
+
+    .stat-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .stat-icon.indigo {
+      background: #EEF2FF;
+      color: var(--primary);
+    }
+
+    .stat-icon.coral {
+      background: #FFF1F2;
+      color: var(--secondary);
+    }
+
+    .stat-icon.purple {
+      background: #F3E8FF;
+      color: #7C3AED;
+    }
+
+    .stat-icon i {
+      width: 24px;
+      height: 24px;
+    }
+
+    .stat-number {
+      font-family: var(--font-heading);
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.2;
+    }
+
+    .stat-label {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* ===========================
+       AGENDA SECTION
+    =========================== */
+    #agenda {
+      background: linear-gradient(180deg, var(--bg) 0%, #F0EFFD 100%);
+    }
+
+    .agenda-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .agenda-header .section-subtitle {
+      margin: 0 auto;
+    }
+
+    .timeline {
+      max-width: 720px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 28px;
+      width: 2px;
+      height: 100%;
+      background: linear-gradient(180deg, var(--primary), var(--secondary));
+      border-radius: 2px;
+      opacity: 0.2;
+    }
+
+    .timeline-item {
+      display: flex;
+      gap: 24px;
+      padding: 0 0 32px 0;
+      position: relative;
+    }
+
+    .timeline-item:last-child {
+      padding-bottom: 0;
+    }
+
+    .timeline-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--primary);
+      border: 3px solid #E0E7FF;
+      flex-shrink: 0;
+      margin-top: 6px;
+      position: relative;
+      left: 22px;
+      z-index: 1;
+    }
+
+    .timeline-card {
+      flex: 1;
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      box-shadow: var(--card-shadow);
+      border: 1px solid rgba(79, 70, 229, 0.04);
+      transition: all var(--transition);
+      margin-left: 12px;
+    }
+
+    .timeline-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--card-shadow-hover);
+    }
+
+    .timeline-time {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--primary);
+      margin-bottom: 6px;
+    }
+
+    .timeline-title {
+      font-family: var(--font-heading);
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .timeline-tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 12px;
+      border-radius: 100px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+    }
+
+    .tag-keynote { background: var(--tag-keynote-bg); color: var(--tag-keynote-text); }
+    .tag-workshop { background: var(--tag-workshop-bg); color: var(--tag-workshop-text); }
+    .tag-panel { background: var(--tag-panel-bg); color: var(--tag-panel-text); }
+    .tag-break { background: var(--tag-break-bg); color: var(--tag-break-text); }
+    .tag-social { background: var(--tag-social-bg); color: var(--tag-social-text); }
+    .tag-talk { background: var(--tag-talk-bg); color: var(--tag-talk-text); }
+
+    /* ===========================
+       SPEAKERS SECTION
+    =========================== */
+    #speakers {
+      background: var(--bg);
+    }
+
+    .speakers-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .speakers-header .section-subtitle {
+      margin: 0 auto;
+    }
+
+    .speakers-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 28px;
+    }
+
+    .speaker-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 36px 28px;
+      text-align: center;
+      box-shadow: var(--card-shadow);
+      border: 2px solid transparent;
+      transition: all var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .speaker-card::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      border-radius: calc(var(--radius) + 2px);
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      z-index: -1;
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+
+    .speaker-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 48px rgba(79, 70, 229, 0.15);
+      border-color: transparent;
+    }
+
+    .speaker-card:hover::before {
+      opacity: 1;
+    }
+
+    .speaker-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      margin: 0 auto 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-heading);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .speaker-card:nth-child(1) .speaker-avatar {
+      background: linear-gradient(135deg, #4F46E5, #7C3AED);
+    }
+
+    .speaker-card:nth-child(2) .speaker-avatar {
+      background: linear-gradient(135deg, #FF6B6B, #F59E0B);
+    }
+
+    .speaker-card:nth-child(3) .speaker-avatar {
+      background: linear-gradient(135deg, #06B6D4, #3B82F6);
+    }
+
+    .speaker-card:nth-child(4) .speaker-avatar {
+      background: linear-gradient(135deg, #8B5CF6, #EC4899);
+    }
+
+    .speaker-name {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .speaker-role {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+      font-weight: 500;
+    }
+
+    .speaker-topic {
+      font-size: 0.82rem;
+      color: var(--primary);
+      font-weight: 500;
+      padding: 6px 14px;
+      background: #EEF2FF;
+      border-radius: 100px;
+      display: inline-block;
+    }
+
+    /* ===========================
+       REGISTRATION SECTION
+    =========================== */
+    #register {
+      background: linear-gradient(180deg, #F0EFFD 0%, var(--bg) 100%);
+    }
+
+    .register-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .register-header .section-subtitle {
+      margin: 0 auto;
+    }
+
+    .form-card {
+      max-width: 540px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 40px;
+      box-shadow: 0 8px 40px rgba(79, 70, 229, 0.08);
+      border: 1px solid rgba(79, 70, 229, 0.06);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 12px 16px;
+      border: 2px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-size: 0.95rem;
+      color: var(--text);
+      background: var(--bg);
+      transition: all var(--transition);
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
+      background: #fff;
+    }
+
+    .form-group input.error,
+    .form-group select.error {
+      border-color: var(--secondary);
+      box-shadow: 0 0 0 4px rgba(255, 107, 107, 0.1);
+    }
+
+    .form-error {
+      font-size: 0.78rem;
+      color: var(--secondary);
+      margin-top: 6px;
+      display: none;
+      font-weight: 500;
+    }
+
+    .form-error.visible {
+      display: block;
+    }
+
+    .btn-submit {
+      width: 100%;
+      padding: 16px 32px;
+      background: var(--primary);
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: var(--radius-sm);
+      transition: all var(--transition);
+      position: relative;
+      overflow: hidden;
+      margin-top: 8px;
+    }
+
+    .btn-submit::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.6s;
+    }
+
+    .btn-submit:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(79, 70, 229, 0.3);
+    }
+
+    .btn-submit:hover::before {
+      left: 100%;
+    }
+
+    .privacy-note {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 20px;
+    }
+
+    .privacy-note i {
+      width: 14px;
+      height: 14px;
+      vertical-align: -2px;
+      margin-right: 4px;
+    }
+
+    /* Success State */
+    .success-state {
+      display: none;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .success-state.active {
+      display: block;
+      animation: fadeIn 0.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .success-checkmark {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: #ECFDF5;
+      margin: 0 auto 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    @keyframes popIn {
+      0% { transform: scale(0); }
+      80% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    .success-checkmark i {
+      width: 36px;
+      height: 36px;
+      color: #047857;
+    }
+
+    .success-state h3 {
+      font-size: 1.6rem;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+
+    .success-state p {
+      color: var(--text-muted);
+      margin-bottom: 24px;
+      font-size: 0.95rem;
+    }
+
+    .btn-calendar {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 28px;
+      background: #ECFDF5;
+      color: #047857;
+      font-size: 0.92rem;
+      font-weight: 600;
+      border-radius: 100px;
+      transition: all var(--transition);
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-calendar:hover {
+      background: #D1FAE5;
+      transform: translateY(-2px);
+    }
+
+    .btn-calendar i {
+      width: 18px;
+      height: 18px;
+    }
+
+    /* ===========================
+       FAQ SECTION
+    =========================== */
+    #faq {
+      background: var(--bg);
+    }
+
+    .faq-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .faq-header .section-subtitle {
+      margin: 0 auto;
+    }
+
+    .faq-list {
+      max-width: 680px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .faq-item {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--card-shadow);
+      border: 1px solid rgba(79, 70, 229, 0.04);
+      overflow: hidden;
+      transition: all var(--transition);
+    }
+
+    .faq-item:hover {
+      box-shadow: var(--card-shadow-hover);
+    }
+
+    .faq-question {
+      width: 100%;
+      padding: 20px 24px;
+      background: none;
+      font-size: 0.98rem;
+      font-weight: 600;
+      font-family: var(--font-heading);
+      color: var(--text);
+      text-align: left;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      transition: color var(--transition);
+    }
+
+    .faq-question:hover {
+      color: var(--primary);
+    }
+
+    .faq-question i {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      color: var(--text-muted);
+      transition: transform var(--transition);
+    }
+
+    .faq-item.active .faq-question i {
+      transform: rotate(180deg);
+      color: var(--primary);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s ease;
+    }
+
+    .faq-item.active .faq-answer {
+      max-height: 200px;
+    }
+
+    .faq-answer p {
+      padding: 0 24px 20px;
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* ===========================
+       FOOTER
+    =========================== */
+    .footer {
+      background: var(--text);
+      color: #fff;
+      padding: 64px 0 0;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 48px;
+    }
+
+    .footer-brand .nav-logo {
+      color: #fff;
+      margin-bottom: 16px;
+    }
+
+    .footer-brand p {
+      font-size: 0.88rem;
+      color: rgba(255, 255, 255, 0.5);
+      line-height: 1.7;
+      max-width: 280px;
+    }
+
+    .footer-heading {
+      font-family: var(--font-heading);
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .footer-links a {
+      font-size: 0.88rem;
+      color: rgba(255, 255, 255, 0.5);
+      transition: color var(--transition);
+    }
+
+    .footer-links a:hover {
+      color: #fff;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .social-link {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all var(--transition);
+    }
+
+    .social-link:hover {
+      background: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    .social-link i {
+      width: 18px;
+      height: 18px;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .social-link:hover i {
+      color: #fff;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    .footer-bottom p {
+      font-size: 0.82rem;
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    .footer-bottom span {
+      color: var(--secondary);
+    }
+
+    /* ===========================
+       RESPONSIVE BREAKPOINTS
+    =========================== */
+    @media (max-width: 1024px) {
+      .speakers-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      section {
+        padding: 72px 0;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .mobile-menu {
+        display: flex;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .speakers-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+      }
+
+      .speaker-card {
+        padding: 28px 20px;
+      }
+
+      .countdown-value {
+        width: 60px;
+        height: 64px;
+      }
+
+      .timeline::before {
+        left: 18px;
+      }
+
+      .timeline-dot {
+        left: 12px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .form-card {
+        padding: 28px 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 2.2rem;
+        letter-spacing: -0.5px;
+      }
+
+      .hero-tagline {
+        font-size: 1rem;
+      }
+
+      .hero-meta {
+        gap: 8px;
+      }
+
+      .hero-chip {
+        padding: 6px 12px;
+        font-size: 0.78rem;
+      }
+
+      .countdown-value {
+        width: 52px;
+        height: 56px;
+        font-size: 1.4rem;
+        border-radius: 10px;
+      }
+
+      .countdown-sep {
+        font-size: 1.2rem;
+      }
+
+      .countdown {
+        gap: 6px;
+      }
+
+      .speakers-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .btn-primary, .btn-ghost {
+        padding: 12px 24px;
+        font-size: 0.92rem;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+      }
+
+      .timeline::before {
+        left: 14px;
+      }
+
+      .timeline-dot {
+        left: 8px;
+        width: 12px;
+        height: 12px;
+      }
+
+      .timeline-card {
+        padding: 18px 20px;
+      }
+
+      .stat-card {
+        padding: 20px 24px;
+      }
+    }
+
+    /* ===========================
+       SCROLL REVEAL OVERRIDES
+    =========================== */
+    [data-aos] {
+      transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
+    }
+
+    /* Active nav link */
+    .nav-links a.active {
+      color: var(--primary);
+    }
+
+    .nav-links a.active::after {
+      width: 100%;
+    }
+
+    /* Back to top button */
+    .back-to-top {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(79, 70, 229, 0.3);
+      z-index: 900;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all var(--transition);
+      pointer-events: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: all;
+    }
+
+    .back-to-top:hover {
+      background: var(--primary-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 28px rgba(79, 70, 229, 0.4);
+    }
+
+    .back-to-top i {
+      width: 22px;
+      height: 22px;
+    }
+
+    /* Stat number counter animation */
+    .stat-number {
+      display: inline-block;
+    }
+
+    /* Smooth section divider */
+    .section-divider {
+      width: 48px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      border-radius: 4px;
+      margin-bottom: 24px;
+    }
+
+    .agenda-header .section-divider,
+    .speakers-header .section-divider,
+    .register-header .section-divider,
+    .faq-header .section-divider {
+      margin: 0 auto 24px;
+    }
+
+    /* Scroll progress bar */
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      z-index: 1100;
+      transition: width 0.1s linear;
+      border-radius: 0 2px 2px 0;
+    }
+
+    /* Page load animation */
+    body {
+      animation: pageLoad 0.6s ease-out;
+    }
+
+    @keyframes pageLoad {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* Mobile menu stagger animation */
+    .mobile-menu.active a:nth-child(1) { animation: menuSlide 0.4s ease 0.05s both; }
+    .mobile-menu.active a:nth-child(2) { animation: menuSlide 0.4s ease 0.1s both; }
+    .mobile-menu.active a:nth-child(3) { animation: menuSlide 0.4s ease 0.15s both; }
+    .mobile-menu.active a:nth-child(4) { animation: menuSlide 0.4s ease 0.2s both; }
+
+    @keyframes menuSlide {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Confetti canvas */
+    #confetti-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    /* Submit button loading state */
+    .btn-submit.loading {
+      pointer-events: none;
+      opacity: 0.8;
+    }
+
+    .btn-submit .spinner {
+      display: none;
+      width: 20px;
+      height: 20px;
+      border: 2.5px solid rgba(255,255,255,0.3);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin 0.6s linear infinite;
+      margin-right: 8px;
+    }
+
+    .btn-submit.loading .spinner {
+      display: inline-block;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Glowing input focus for enhanced feel */
+    .form-group input:focus,
+    .form-group select:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1), 0 2px 8px rgba(79, 70, 229, 0.08);
+      background: #fff;
+    }
+
+    /* Speaker card topic hover effect */
+    .speaker-card:hover .speaker-topic {
+      background: var(--primary);
+      color: #fff;
+      transition: all var(--transition);
+    }
+
+    /* Timeline dot pulse on hover */
+    .timeline-item:hover .timeline-dot {
+      box-shadow: 0 0 0 6px rgba(79, 70, 229, 0.15);
+      transition: box-shadow var(--transition);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Scroll Progress Bar -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- Confetti Canvas -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- ==================== NAVBAR ==================== -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="#" class="nav-logo">
+        <div class="bolt-icon">
+          <i data-lucide="zap"></i>
+        </div>
+        DevFest
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#agenda">Agenda</a></li>
+        <li><a href="#speakers">Speakers</a></li>
+        <li><a href="#register" class="nav-cta">Get Tickets</a></li>
+      </ul>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#about" class="mobile-link">About</a>
+    <a href="#agenda" class="mobile-link">Agenda</a>
+    <a href="#speakers" class="mobile-link">Speakers</a>
+    <a href="#register" class="mobile-link">Register</a>
+  </div>
+
+  <!-- ==================== HERO ==================== -->
+  <section class="hero" id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-decor hero-decor-1"></div>
+    <div class="hero-decor hero-decor-2"></div>
+    <div class="hero-decor hero-decor-3"></div>
+    <div class="hero-decor hero-decor-4"></div>
+    <div class="hero-content">
+      <div class="hero-badge" data-aos="fade-down" data-aos-delay="100">
+        <i data-lucide="ticket"></i>
+        300 seats · Free Entry
+      </div>
+
+      <h1 data-aos="fade-up" data-aos-delay="200">
+        Dev<span>Fest</span> 2025
+      </h1>
+
+      <p class="hero-tagline" data-aos="fade-up" data-aos-delay="300">
+        Where builders, makers & thinkers unite.
+      </p>
+
+      <div class="hero-meta" data-aos="fade-up" data-aos-delay="400">
+        <div class="hero-chip">
+          <i data-lucide="calendar"></i>
+          Sat, 15 November 2025
+        </div>
+        <div class="hero-chip">
+          <i data-lucide="clock"></i>
+          9:00 AM – 6:00 PM
+        </div>
+        <div class="hero-chip">
+          <i data-lucide="map-pin"></i>
+          The Warehouse, Bengaluru
+        </div>
+      </div>
+
+      <div class="countdown" data-aos="fade-up" data-aos-delay="500" id="countdown">
+        <div class="countdown-item">
+          <div class="countdown-value" id="cd-days">00</div>
+          <span class="countdown-label">Days</span>
+        </div>
+        <span class="countdown-sep">:</span>
+        <div class="countdown-item">
+          <div class="countdown-value" id="cd-hours">00</div>
+          <span class="countdown-label">Hours</span>
+        </div>
+        <span class="countdown-sep">:</span>
+        <div class="countdown-item">
+          <div class="countdown-value" id="cd-mins">00</div>
+          <span class="countdown-label">Mins</span>
+        </div>
+        <span class="countdown-sep">:</span>
+        <div class="countdown-item">
+          <div class="countdown-value" id="cd-secs">00</div>
+          <span class="countdown-label">Secs</span>
+        </div>
+      </div>
+
+      <div class="hero-buttons" data-aos="fade-up" data-aos-delay="600">
+        <a href="#register" class="btn-primary">
+          <i data-lucide="arrow-right" style="width:18px;height:18px"></i>
+          Register Now
+        </a>
+        <a href="#agenda" class="btn-ghost">
+          <i data-lucide="list" style="width:18px;height:18px"></i>
+          View Agenda
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== ABOUT ==================== -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-text" data-aos="fade-right">
+          <span class="section-label">About the event</span>
+          <div class="section-divider"></div>
+          <h2 class="section-title">A day built for developers, by developers.</h2>
+          <p>
+            DevFest 2025 is Bengaluru's premier developer conference bringing together engineers, designers, and product builders under one roof. Whether you're a seasoned architect or just writing your first line of code, there's something here for you.
+          </p>
+          <p>
+            Expect deep-dive talks on AI, cloud infrastructure, and modern web — plus hands-on workshops where you'll ship real code. Meet the people building the tools you use every day, and leave inspired to build what's next.
+          </p>
+        </div>
+
+        <div class="stats-grid" data-aos="fade-left">
+          <div class="stat-card">
+            <div class="stat-icon indigo">
+              <i data-lucide="users"></i>
+            </div>
+            <div>
+              <div class="stat-number">300+</div>
+              <div class="stat-label">Attendees</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon coral">
+              <i data-lucide="mic-2"></i>
+            </div>
+            <div>
+              <div class="stat-number">10+</div>
+              <div class="stat-label">Speakers</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon purple">
+              <i data-lucide="code-2"></i>
+            </div>
+            <div>
+              <div class="stat-number">4</div>
+              <div class="stat-label">Workshops</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== AGENDA ==================== -->
+  <section id="agenda">
+    <div class="container">
+      <div class="agenda-header">
+        <span class="section-label" data-aos="fade-up">Schedule</span>
+        <div class="section-divider" data-aos="fade-up" data-aos-delay="50"></div>
+        <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">What's happening</h2>
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">
+          A full day of learning, building, and connecting with the developer community.
+        </p>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-item" data-aos="fade-up" data-aos-delay="100">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-time">9:00 AM</div>
+            <div class="timeline-title">Registration & Welcome Coffee</div>
+            <span class="timeline-tag tag-break">Break</span>
+          </div>
+        </div>
+
+        <div class="timeline-item" data-aos="fade-up" data-aos-delay="150">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-time">10:00 AM</div>
+            <div class="timeline-title">Opening Keynote: The Next Decade of Web</div>
+            <span class="timeline-tag tag-keynote">Keynote</span>
+          </div>
+        </div>
+
+        <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-time">11:00 AM</div>
+            <div class="timeline-title">Building AI-Native Products at Scale</div>
+            <span class="timeline-tag tag-talk">Talk</span>
+          </div>
+        </div>
+
+        <div class="timeline-item" data-aos="fade-up" data-aos-delay="250">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-time">12:00 PM</div>
+            <div class="timeline-title">Hands-on: LLM APIs Zero to Production</div>
+            <span class="timeline-tag tag-workshop">Workshop</span>
+          </div>
+        </div>
+
+        <div class="timeline-item" data-aos="fade-up" data-aos-delay="300">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-time">1:30 PM</div>
+            <div class="timeline-title">Lunch Break</div>
+            <span class="timeline-tag tag-break">Break</span>
+          </div>
+        </div>
+
+        <div class="timeline-item" data-aos="fade-up" data-aos-delay="350">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-time">2:30 PM</div>
+            <div class="timeline-title">DevOps in 2025: GitOps, Platforms & Beyond</div>
+            <span class="timeline-tag tag-talk">Talk</span>
+          </div>
+        </div>
+
+        <div class="timeline-item" data-aos="fade-up" data-aos-delay="400">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-time">3:30 PM</div>
+            <div class="timeline-title">Panel: Open Source in the Age of AI</div>
+            <span class="timeline-tag tag-panel">Panel</span>
+          </div>
+        </div>
+
+        <div class="timeline-item" data-aos="fade-up" data-aos-delay="450">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-time">5:00 PM</div>
+            <div class="timeline-title">Lightning Talks & Closing Remarks</div>
+            <span class="timeline-tag tag-talk">Talk</span>
+          </div>
+        </div>
+
+        <div class="timeline-item" data-aos="fade-up" data-aos-delay="500">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-time">6:00 PM</div>
+            <div class="timeline-title">Networking & Drinks</div>
+            <span class="timeline-tag tag-social">Social</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SPEAKERS ==================== -->
+  <section id="speakers">
+    <div class="container">
+      <div class="speakers-header">
+        <span class="section-label" data-aos="fade-up">Speakers</span>
+        <div class="section-divider" data-aos="fade-up" data-aos-delay="50"></div>
+        <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">Meet the speakers</h2>
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">
+          Industry leaders sharing insights on the future of technology.
+        </p>
+      </div>
+
+      <div class="speakers-grid">
+        <div class="speaker-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="speaker-avatar">AS</div>
+          <div class="speaker-name">Ananya Sharma</div>
+          <div class="speaker-role">Engineering Lead, Stripe</div>
+          <span class="speaker-topic">The Next Decade of Web</span>
+        </div>
+
+        <div class="speaker-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="speaker-avatar">RM</div>
+          <div class="speaker-name">Rohan Mehta</div>
+          <div class="speaker-role">Staff Engineer, Notion</div>
+          <span class="speaker-topic">AI-Native Products at Scale</span>
+        </div>
+
+        <div class="speaker-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="speaker-avatar">PN</div>
+          <div class="speaker-name">Priya Nair</div>
+          <div class="speaker-role">Developer Advocate, Anthropic</div>
+          <span class="speaker-topic">LLM APIs: Zero to Production</span>
+        </div>
+
+        <div class="speaker-card" data-aos="fade-up" data-aos-delay="400">
+          <div class="speaker-avatar">SO</div>
+          <div class="speaker-name">Samuel Okafor</div>
+          <div class="speaker-role">Platform Engineer, Cloudflare</div>
+          <span class="speaker-topic">DevOps in 2025: GitOps & Beyond</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== REGISTRATION ==================== -->
+  <section id="register">
+    <div class="container">
+      <div class="register-header">
+        <span class="section-label" data-aos="fade-up">Registration</span>
+        <div class="section-divider" data-aos="fade-up" data-aos-delay="50"></div>
+        <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">Reserve your spot</h2>
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">
+          Free. No credit card. Just show up.
+        </p>
+      </div>
+
+      <div class="form-card" data-aos="fade-up" data-aos-delay="300">
+        <form id="registrationForm" novalidate>
+          <div class="form-group">
+            <label for="fullName">Full Name</label>
+            <input type="text" id="fullName" placeholder="e.g. Priya Sharma" required />
+            <div class="form-error" id="fullNameError">Please enter your full name.</div>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" placeholder="e.g. priya@example.com" required />
+            <div class="form-error" id="emailError">Please enter a valid email address.</div>
+          </div>
+
+          <div class="form-group">
+            <label for="role">Your Role</label>
+            <select id="role" required>
+              <option value="" disabled selected>Select your role</option>
+              <option>Student / Learner</option>
+              <option>Frontend Developer</option>
+              <option>Backend Developer</option>
+              <option>Full-Stack Developer</option>
+              <option>ML / AI Engineer</option>
+              <option>DevOps / Platform Engineer</option>
+              <option>Designer</option>
+              <option>Product Manager</option>
+              <option>Founder</option>
+              <option>Other</option>
+            </select>
+            <div class="form-error" id="roleError">Please select your role.</div>
+          </div>
+
+          <div class="form-group">
+            <label for="source">How did you hear about us?</label>
+            <select id="source" required>
+              <option value="" disabled selected>Select an option</option>
+              <option>Twitter/X</option>
+              <option>LinkedIn</option>
+              <option>Friend</option>
+              <option>Newsletter</option>
+              <option>Other</option>
+            </select>
+            <div class="form-error" id="sourceError">Please select how you heard about us.</div>
+          </div>
+
+          <button type="submit" class="btn-submit" id="submitBtn">
+            <span class="spinner"></span>
+            Reserve My Seat →
+          </button>
+        </form>
+
+        <div class="success-state" id="successState">
+          <div class="success-checkmark">
+            <i data-lucide="check"></i>
+          </div>
+          <h3>You're in! 🎉</h3>
+          <p id="successEmail">Confirmation sent to your email.</p>
+          <button class="btn-calendar" onclick="addToCalendar()">
+            <i data-lucide="calendar-plus"></i>
+            Add to Calendar
+          </button>
+        </div>
+      </div>
+
+      <p class="privacy-note" data-aos="fade-up" data-aos-delay="400">
+        <i data-lucide="shield-check"></i>
+        We respect your privacy. No spam, ever.
+      </p>
+    </div>
+  </section>
+
+  <!-- ==================== FAQ ==================== -->
+  <section id="faq">
+    <div class="container">
+      <div class="faq-header">
+        <span class="section-label" data-aos="fade-up">FAQ</span>
+        <div class="section-divider" data-aos="fade-up" data-aos-delay="50"></div>
+        <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">Frequently asked questions</h2>
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">
+          Everything you need to know about DevFest 2025.
+        </p>
+      </div>
+
+      <div class="faq-list">
+        <div class="faq-item" data-aos="fade-up" data-aos-delay="100">
+          <button class="faq-question" aria-expanded="false">
+            Is DevFest 2025 really free?
+            <i data-lucide="chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            <p>Yes! 100% free. Just register and show up. No hidden costs, no credit card required.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" data-aos="fade-up" data-aos-delay="150">
+          <button class="faq-question" aria-expanded="false">
+            Will sessions be recorded?
+            <i data-lucide="chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            <p>Yes, all keynotes and talks will be recorded and published on our YouTube channel after the event.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" data-aos="fade-up" data-aos-delay="200">
+          <button class="faq-question" aria-expanded="false">
+            Can I submit a lightning talk?
+            <i data-lucide="chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            <p>Yes! We love community contributions. Fill out the speaker form on our website and we'll get back to you.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" data-aos="fade-up" data-aos-delay="250">
+          <button class="faq-question" aria-expanded="false">
+            Is lunch included?
+            <i data-lucide="chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            <p>Yes, lunch and refreshments are provided for all registered attendees throughout the day.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" data-aos="fade-up" data-aos-delay="300">
+          <button class="faq-question" aria-expanded="false">
+            Where do I park?
+            <i data-lucide="chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            <p>Free parking is available at The Warehouse basement. Look for the DevFest signage at the entrance.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="nav-logo">
+            <div class="bolt-icon">
+              <i data-lucide="zap"></i>
+            </div>
+            DevFest
+          </a>
+          <p>Where builders, makers & thinkers unite. Join us for a day of innovation, learning, and community in Bengaluru.</p>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#agenda">Agenda</a></li>
+            <li><a href="#speakers">Speakers</a></li>
+            <li><a href="#register">Register</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Contact</h4>
+          <ul class="footer-links">
+            <li><a href="mailto:hello@devfest.dev">hello@devfest.dev</a></li>
+            <li><a href="#">Code of Conduct</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Sponsor Us</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Follow Us</h4>
+          <div class="social-links">
+            <a href="#" class="social-link" aria-label="Twitter">
+              <i data-lucide="twitter"></i>
+            </a>
+            <a href="#" class="social-link" aria-label="LinkedIn">
+              <i data-lucide="linkedin"></i>
+            </a>
+            <a href="#" class="social-link" aria-label="GitHub">
+              <i data-lucide="github"></i>
+            </a>
+            <a href="#" class="social-link" aria-label="YouTube">
+              <i data-lucide="youtube"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>Made with <span>♥</span> by the DevFest Team · 2025</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <i data-lucide="arrow-up"></i>
+  </button>
+
+  <!-- ==================== JAVASCRIPT ==================== -->
+  <script>
+    // ======= Initialize AOS =======
+    document.addEventListener('DOMContentLoaded', function() {
+      AOS.init({
+        duration: 700,
+        easing: 'ease-out-cubic',
+        once: true,
+        offset: 60
+      });
+
+      // ======= Initialize Lucide Icons =======
+      lucide.createIcons();
+    });
+
+    // ======= Navbar Scroll Effect + Back to Top + Active Nav =======
+    const navbar = document.getElementById('navbar');
+    const backToTop = document.getElementById('backToTop');
+    const sections = document.querySelectorAll('section[id]');
+    const navLinksAll = document.querySelectorAll('.nav-links a:not(.nav-cta)');
+
+    window.addEventListener('scroll', function() {
+      const currentScroll = window.pageYOffset;
+
+      // Navbar glass effect
+      if (currentScroll > 40) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+
+      // Back to top button
+      if (currentScroll > 600) {
+        backToTop.classList.add('visible');
+      } else {
+        backToTop.classList.remove('visible');
+      }
+
+      // Active nav link highlight
+      let currentSection = '';
+      sections.forEach(function(section) {
+        const sectionTop = section.offsetTop - 120;
+        if (currentScroll >= sectionTop) {
+          currentSection = section.getAttribute('id');
+        }
+      });
+
+      navLinksAll.forEach(function(link) {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + currentSection) {
+          link.classList.add('active');
+        }
+      });
+
+      // Scroll progress bar
+      var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      var scrollPercent = (currentScroll / docHeight) * 100;
+      document.getElementById('scrollProgress').style.width = scrollPercent + '%';
+    });
+
+    backToTop.addEventListener('click', function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // ======= Hamburger Menu =======
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', function() {
+      hamburger.classList.toggle('active');
+      mobileMenu.classList.toggle('active');
+      document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+    });
+
+    // Close mobile menu on link click
+    document.querySelectorAll('.mobile-link').forEach(function(link) {
+      link.addEventListener('click', function() {
+        hamburger.classList.remove('active');
+        mobileMenu.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+    });
+
+    // ======= Countdown Timer =======
+    const eventDate = new Date('November 15, 2025 09:00:00').getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const diff = eventDate - now;
+
+      if (diff <= 0) {
+        document.getElementById('cd-days').textContent = '00';
+        document.getElementById('cd-hours').textContent = '00';
+        document.getElementById('cd-mins').textContent = '00';
+        document.getElementById('cd-secs').textContent = '00';
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+      // Tick animation on seconds change
+      const secsEl = document.getElementById('cd-secs');
+      secsEl.classList.remove('tick');
+      void secsEl.offsetWidth; // trigger reflow
+      secsEl.classList.add('tick');
+
+      document.getElementById('cd-days').textContent = String(days).padStart(2, '0');
+      document.getElementById('cd-hours').textContent = String(hours).padStart(2, '0');
+      document.getElementById('cd-mins').textContent = String(minutes).padStart(2, '0');
+      secsEl.textContent = String(seconds).padStart(2, '0');
+    }
+
+    updateCountdown();
+
+    // ======= Animated Stat Counter =======
+    function animateCounter(el, target, suffix) {
+      const duration = 1500;
+      const start = 0;
+      const startTime = performance.now();
+
+      function tick(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3); // easeOutCubic
+        const current = Math.floor(eased * target);
+        el.textContent = current + suffix;
+        if (progress < 1) {
+          requestAnimationFrame(tick);
+        } else {
+          el.textContent = target + suffix;
+        }
+      }
+
+      requestAnimationFrame(tick);
+    }
+
+    // Observe stat cards for counter animation
+    const statObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const text = el.textContent.trim();
+          const num = parseInt(text);
+          const suffix = text.replace(/[0-9]/g, '');
+          if (!isNaN(num) && !el.dataset.counted) {
+            el.dataset.counted = 'true';
+            animateCounter(el, num, suffix);
+          }
+          statObserver.unobserve(el);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('.stat-number').forEach(function(el) {
+      statObserver.observe(el);
+    });
+    setInterval(updateCountdown, 1000);
+
+    // ======= Form Validation & Submit =======
+    const form = document.getElementById('registrationForm');
+    const successState = document.getElementById('successState');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      let isValid = true;
+
+      // Full Name
+      const fullName = document.getElementById('fullName');
+      const fullNameError = document.getElementById('fullNameError');
+      if (!fullName.value.trim()) {
+        fullName.classList.add('error');
+        fullNameError.classList.add('visible');
+        isValid = false;
+      } else {
+        fullName.classList.remove('error');
+        fullNameError.classList.remove('visible');
+      }
+
+      // Email
+      const email = document.getElementById('email');
+      const emailError = document.getElementById('emailError');
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!email.value.trim() || !emailRegex.test(email.value.trim())) {
+        email.classList.add('error');
+        emailError.classList.add('visible');
+        isValid = false;
+      } else {
+        email.classList.remove('error');
+        emailError.classList.remove('visible');
+      }
+
+      // Role
+      const role = document.getElementById('role');
+      const roleError = document.getElementById('roleError');
+      if (!role.value) {
+        role.classList.add('error');
+        roleError.classList.add('visible');
+        isValid = false;
+      } else {
+        role.classList.remove('error');
+        roleError.classList.remove('visible');
+      }
+
+      // Source
+      const source = document.getElementById('source');
+      const sourceError = document.getElementById('sourceError');
+      if (!source.value) {
+        source.classList.add('error');
+        sourceError.classList.add('visible');
+        isValid = false;
+      } else {
+        source.classList.remove('error');
+        sourceError.classList.remove('visible');
+      }
+
+      if (isValid) {
+        // Show loading state
+        var submitBtn = document.getElementById('submitBtn');
+        submitBtn.classList.add('loading');
+        submitBtn.innerHTML = '<span class="spinner"></span> Registering...';
+
+        // Simulate network delay for realism
+        setTimeout(function() {
+          form.style.display = 'none';
+          successState.classList.add('active');
+          document.getElementById('successEmail').textContent =
+            'Confirmation sent to ' + email.value.trim();
+          // Re-initialize lucide icons for the success state
+          lucide.createIcons();
+          // Launch confetti!
+          launchConfetti();
+        }, 1200);
+      }
+    });
+
+    // ======= Confetti Effect =======
+    function launchConfetti() {
+      var canvas = document.getElementById('confetti-canvas');
+      var ctx = canvas.getContext('2d');
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      var particles = [];
+      var colors = ['#4F46E5', '#FF6B6B', '#7C3AED', '#F59E0B', '#06B6D4', '#EC4899', '#10B981'];
+
+      for (var i = 0; i < 150; i++) {
+        particles.push({
+          x: canvas.width / 2 + (Math.random() - 0.5) * 200,
+          y: canvas.height / 2,
+          vx: (Math.random() - 0.5) * 16,
+          vy: (Math.random() - 1) * 18 - 4,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          size: Math.random() * 8 + 3,
+          rotation: Math.random() * 360,
+          rotationSpeed: (Math.random() - 0.5) * 12,
+          gravity: 0.25,
+          opacity: 1,
+          shape: Math.random() > 0.5 ? 'rect' : 'circle'
+        });
+      }
+
+      var startTime = Date.now();
+
+      function animate() {
+        var elapsed = Date.now() - startTime;
+        if (elapsed > 3500) {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          return;
+        }
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        particles.forEach(function(p) {
+          p.x += p.vx;
+          p.vy += p.gravity;
+          p.y += p.vy;
+          p.rotation += p.rotationSpeed;
+          p.vx *= 0.99;
+
+          if (elapsed > 2000) {
+            p.opacity = Math.max(0, 1 - (elapsed - 2000) / 1500);
+          }
+
+          ctx.save();
+          ctx.globalAlpha = p.opacity;
+          ctx.translate(p.x, p.y);
+          ctx.rotate(p.rotation * Math.PI / 180);
+          ctx.fillStyle = p.color;
+
+          if (p.shape === 'rect') {
+            ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.6);
+          } else {
+            ctx.beginPath();
+            ctx.arc(0, 0, p.size / 2, 0, Math.PI * 2);
+            ctx.fill();
+          }
+
+          ctx.restore();
+        });
+
+        requestAnimationFrame(animate);
+      }
+
+      animate();
+    }
+
+    // Clear error on input
+    document.querySelectorAll('#registrationForm input, #registrationForm select').forEach(function(el) {
+      el.addEventListener('input', function() {
+        this.classList.remove('error');
+        const errorEl = document.getElementById(this.id + 'Error');
+        if (errorEl) errorEl.classList.remove('visible');
+      });
+
+      el.addEventListener('change', function() {
+        this.classList.remove('error');
+        const errorEl = document.getElementById(this.id + 'Error');
+        if (errorEl) errorEl.classList.remove('visible');
+      });
+    });
+
+    // ======= Add to Calendar =======
+    function addToCalendar() {
+      const title = 'DevFest 2025';
+      const start = '20251115T033000Z'; // 9:00 AM IST = 3:30 AM UTC
+      const end = '20251115T123000Z';   // 6:00 PM IST = 12:30 PM UTC
+      const location = 'The Warehouse, Bengaluru, India';
+      const details = 'DevFest 2025 - Where builders, makers & thinkers unite.';
+
+      const url = 'https://calendar.google.com/calendar/render?action=TEMPLATE' +
+        '&text=' + encodeURIComponent(title) +
+        '&dates=' + start + '/' + end +
+        '&location=' + encodeURIComponent(location) +
+        '&details=' + encodeURIComponent(details);
+
+      window.open(url, '_blank');
+    }
+
+    // ======= FAQ Accordion =======
+    document.querySelectorAll('.faq-question').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        const item = this.parentElement;
+        const isActive = item.classList.contains('active');
+
+        // Close all
+        document.querySelectorAll('.faq-item').forEach(function(faq) {
+          faq.classList.remove('active');
+          faq.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+        });
+
+        // Toggle current
+        if (!isActive) {
+          item.classList.add('active');
+          this.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
